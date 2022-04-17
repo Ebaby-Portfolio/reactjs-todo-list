@@ -1,8 +1,11 @@
 import './App.css';
+import ListInput from './components/ListInput'
 
 function App() {
   return (
-    null
+    <div className='container'>
+      <ListInput />
+    </div>
   );
 }
 
