@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import '../stylesheets/listInput.css'
 
 export default function ListInput() {
     const [value, setValue] = useState('')

@@ -1,7 +1,8 @@
 import React from 'react'
+import '../stylesheets/todoList.css'
 
 export default function TodoList() {
     return (
-        <div>TodoList</div>
+        <div className='todo-list'>TodoList</div>
     )
 }
