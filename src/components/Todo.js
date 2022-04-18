@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import '../stylesheets/todo.css'
 
-export default function Todo({ todo, toggleTodoChecked, removeTodo }) {
+export default function Todo({ todo, toggleTodoChecked, removeTodo, setTodoIdToEdit }) {
     const [todoTextStyle, setTodoTextStyle] = useState('todo-val')
 
     const handleCheckboxClick = e => {
@@ -16,8 +16,10 @@ export default function Todo({ todo, toggleTodoChecked, removeTodo }) {
                 onClick={handleCheckboxClick}
             />
             <li className={todoTextStyle}>{todo.text}</li>
-            <button className='todo-edit'>Edit</button>
-            <button className='todo-remove' onClick={() => removeTodo(todo.id)}>Remove</button>
+            <div className='todo-icon-container'>
+                <div className='todo-edit' onClick={() => setTodoIdToEdit(todo.id)}></div>
+                <div className='todo-remove' onClick={() => removeTodo(todo.id)}></div>
+            </div>
         </div >
     )
 }

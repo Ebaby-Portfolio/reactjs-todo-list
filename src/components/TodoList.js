@@ -2,7 +2,7 @@ import React from 'react'
 import '../stylesheets/todo.css'
 import Todo from './Todo'
 
-export default function TodoList({ todos, toggleTodoChecked, removeTodo }) {
+export default function TodoList({ todos, toggleTodoChecked, removeTodo, setTodoIdToEdit }) {
     return (
         <div className='todo-list'>
             {(todos === null || todos.length === 0) && <div>TodoList</div>}
@@ -13,6 +13,7 @@ export default function TodoList({ todos, toggleTodoChecked, removeTodo }) {
                             todo={todo}
                             toggleTodoChecked={toggleTodoChecked}
                             removeTodo={removeTodo}
+                            setTodoIdToEdit={setTodoIdToEdit}
                         />
                     ))}
                 </ul>
