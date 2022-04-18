@@ -7,6 +7,30 @@
     align-items: center;
 }
 
+.input-container {
+    width: 80%;
+    height: 40px;
+    border: 3px solid rgba(255, 0, 0, 0.25);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+}
+
+.input-container input {
+    width: 80%;
+    border: none;
+}
+
+.input-container button {
+    width: 20%;
+    height: 100%;
+    background-color: cornflowerblue;
+    border: none;
+    font-weight: bold;
+    font-size: 18px;
+    color: white;
+}
+
 .input-normal {
     border: 1px solid rgba(0, 0, 0, 0.2);
 }

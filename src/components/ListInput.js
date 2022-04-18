@@ -1,26 +1,26 @@
-import React, { useState } from 'react'
+import React, { forwardRef, useImperativeHandle, useState } from 'react'
 import uuid from 'react-uuid';
 import '../stylesheets/listInput.css'
 
-export default function ListInput({ addTodo }) {
+const ListInput = ({ addTodo }, ref) => {
     const [todo, setTodo] = useState({
         id: '',
         text: '',
         completed: false
     })
-    const [inputStyle, setInputStyle] = useState('input-normal');
+
+    useImperativeHandle(ref,
+        () => ({
+            setTodoTextFromOutside: text => {
+                setTodo({ ...todo, text: text })
+            }
+        }));
 
     const onFormSubmit = e => {
         e.preventDefault();
+        if (todo.text.trim() === '') return;
+
         console.log(`submitted: ${todo.text}`);
-        if (todo.text.trim() === '') {
-            setInputStyle('input-error');
-            return;
-        }
-        else {
-            if (inputStyle !== 'input-normal')
-                setInputStyle('input-normal');
-        }
 
         addTodo({ ...todo, id: uuid() });
 
@@ -33,13 +33,17 @@ export default function ListInput({ addTodo }) {
 
     return (
         <form className='list-input-form' onSubmit={onFormSubmit}>
-            <input className={inputStyle}
-                type="text"
-                placeholder="Add Todo"
-                value={todo.text}
-                onChange={onInputChanged}
-            />
-            <button type='submit'>Add</button>
+            <div className='input-container'>
+                <input className='input-normal'
+                    type='text'
+                    placeholder='Add Todo'
+                    value={todo.text}
+                    onChange={onInputChanged}
+                />
+                <button type='submit'>Add</button>
+            </div>
         </form>
     )
 }
+
+export default forwardRef(ListInput);
