@@ -5,7 +5,7 @@ export default function Todo({ todo, toggleTodoChecked, removeTodo, setTodoIdToE
     const [todoTextStyle, setTodoTextStyle] = useState('todo-val')
 
     const handleCheckboxClick = e => {
-        setTodoTextStyle(todoTextStyle === 'todo-val' ? 'todo-val todo-checked' : 'todo-val');
+        setTodoTextStyle(todoTextStyle === 'todo-val' ? 'todo-checked' : 'todo-val');
     }
 
     return (
